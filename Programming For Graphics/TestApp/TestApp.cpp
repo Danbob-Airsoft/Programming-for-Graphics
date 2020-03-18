@@ -12,37 +12,8 @@
 #include "Camera.h"
 #include <vector>
 #include "Vertex.h"
+#include "Shader.h"
 
-void CheckShaderError(GLuint Shader, GLuint Flag, bool IsProgram, const std::string& ErrorMessage)
-{
-	GLint Success = 0;
-	GLchar error[1024] = { 0 };
-
-	if (IsProgram)
-	{
-		glGetProgramiv(Shader, Flag, &Success);
-	}
-	else
-	{
-		glGetShaderiv(Shader, Flag, &Success);
-	}
-
-	if (Success == GL_FALSE)
-	{
-		if (IsProgram)
-		{
-			glGetProgramInfoLog(Shader, sizeof(error), NULL, error);
-		}
-		else
-		{
-			glGetShaderInfoLog(Shader, sizeof(error), NULL, error);
-		}
-		std::cerr << ": '" << error << "'" << std::endl;
-	}
-
-	glClearColor(0.0f, 0.15f, 0.3f, 1.0f);
-	glViewport(0, 0, 800, 800);
-}
 
 int main(int argc, char *argv[])
 {
@@ -139,9 +110,7 @@ int main(int argc, char *argv[])
 
 	//---------------------------------- Link and Validate Shader Program -------------------------
 	glLinkProgram(ShaderProgram);
-	CheckShaderError(ShaderProgram, GL_LINK_STATUS, true, "Error: Program linking failed: ");
 	glValidateProgram(ShaderProgram);
-	CheckShaderError(ShaderProgram, GL_VALIDATE_STATUS, true, "Error: program is invalid: ");
 
 	//---------------------------------- Make Camera ----------------------------------------------
 	std::vector<Camera*> ListOfCameras;
@@ -154,6 +123,10 @@ int main(int argc, char *argv[])
 	float XRotator;
 	float YRotator;
 	float ZRotator;
+
+	//------------------------------------- New Shader Object -----------------------------------
+	Shader* basicShader = new Shader("../Resources/Basic", *ListOfCameras[ActiveCamera]);
+
 	//------------------------------------------- Main Loop -----------------------------------------
 	while (true) 
 	{
@@ -216,17 +189,15 @@ int main(int argc, char *argv[])
 		}
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glUseProgram(ShaderProgram);
-		GLint modelLoc = glGetUniformLocation(ShaderProgram, "model");
-		glUniformMatrix4fv(modelLoc, 1 , GL_FALSE, &Square1.m_transform->GetModel()[0][0]);
-		GLint viewLoc = glGetUniformLocation(ShaderProgram, "view");
-		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &ListOfCameras[ActiveCamera]->CalculateViewMatrix()[0][0]);
-		GLint PersLoc = glGetUniformLocation(ShaderProgram, "projection");
-		glUniformMatrix4fv(PersLoc, 1, GL_FALSE, &ListOfCameras[ActiveCamera]->GetPerspective()[0][0]);
-		//glBindVertexArray(VertexArrayObject);
-		//glDrawArrays(GL_TRIANGLES, 0, 3);
+
+		//Old Triangles
 		//Tril.Draw(XRotator, YRotator, ZRotator);
 		//Tri2.Draw(XRotator, YRotator, ZRotator);
+
+		basicShader->Bind();
+		basicShader->Update(*Square1.m_transform);
+
+		//Square Draw
 		Square1.Draw(XRotator, YRotator, ZRotator);
 
 		SDL_Delay(16);

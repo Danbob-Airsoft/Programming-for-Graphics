@@ -16,9 +16,15 @@ public:
 	int m_drawCount;
 	Transform* m_transform = new Transform();
 private:
-	GLuint m_vertexBufferObject[2];
-	GLuint m_vertexArrayObject = 0;
+	enum
+	{
+		POSITION_VB,
+		INDEX_VB,
+		NUM_BUFFERS
+	};
 
+	GLuint m_vertexBufferObject[NUM_BUFFERS];
+	GLuint m_vertexArrayObject = 0;
 };
 
 #endif // !MESH_H
