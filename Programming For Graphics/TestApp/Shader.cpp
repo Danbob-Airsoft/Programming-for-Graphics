@@ -1,5 +1,76 @@
 #include "Shader.h"
 
+static string LoadShader(const string& fileName)
+{
+	std::ifstream file;
+	const char* fileNameChar = fileName.c_str();
+	file.open(fileNameChar, ifstream::in);
+
+	string output;
+	string line;
+
+	if (file.is_open())
+	{
+		while (file.good())
+		{
+			getline(file, line);
+			output.append(line + "\n");
+		}
+	}
+	else
+	{
+		std::cerr << "Unable to load shader: " << fileName << std::endl;
+	}
+	return output;
+}
+
+
+static void CheckShaderError(GLuint Shader, GLuint Flag, bool IsProgram, const std::string& ErrorMessage)
+{
+	GLint Success = 0;
+	GLchar error[1024] = { 0 };
+
+	if (IsProgram)
+	{
+		glGetProgramiv(Shader, Flag, &Success);
+	}
+	else
+	{
+		glGetShaderiv(Shader, Flag, &Success);
+	}
+
+	if (Success == GL_FALSE)
+	{
+		if (IsProgram)
+		{
+			glGetProgramInfoLog(Shader, sizeof(error), NULL, error);
+		}
+		else
+		{
+			glGetShaderInfoLog(Shader, sizeof(error), NULL, error);
+		}
+		std::cerr << ErrorMessage << ": '" << error << "'" << std::endl;
+	}
+}
+
+static GLuint CreateShader(const string& ShaderSource, GLenum shaderType)
+{
+	GLuint shader = glCreateShader(shaderType);
+
+	if (shader == 0)
+	{
+		std::cerr << "Error: Shader Creation Failed" << std::endl;
+	}
+
+	const char* tempSourceCode = ShaderSource.c_str();
+
+	glShaderSource(shader, 1, &tempSourceCode, NULL);
+	glCompileShader(shader);
+
+	CheckShaderError(shader, GL_COMPILE_STATUS, false, "Error: Shader Failed to Compile");
+	return shader;
+}
+
 Shader::Shader(const string FileLocation, Camera& camera)
 {
 	m_Camera = &camera;
