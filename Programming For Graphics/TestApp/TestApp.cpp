@@ -1,7 +1,9 @@
 // TestApp.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 #define GLEW_STATIC
+#define STB_IMAGE_IMPLEMENTATION
 
+#include "stb_image.h"
 #include <glew.h>
 #include <SDL_opengl.h>
 #include <glm/gtc/type_ptr.hpp>
@@ -14,6 +16,42 @@
 #include "Vertex.h"
 #include "Shader.h"
 
+GLuint textureID;
+
+void LoadTexture(string TextureLocation) 
+{
+	int width, height, numComponents;
+	unsigned char* ImageData = stbi_load(TextureLocation.c_str(), &width, &height, &numComponents, STBI_rgb_alpha);
+	if (ImageData == NULL) 
+	{
+		std::cerr << "Texture Loading Failed for Texture: " << TextureLocation << std::endl;
+	}
+	GLenum format;
+	if (numComponents == 1) 
+	{
+		format = GL_RED;
+	}
+	else if (numComponents == 3)
+	{
+		format = GL_RGB;
+	}
+	else if (numComponents == 4)
+	{
+		format = GL_RGBA;
+	}
+
+	glGenTextures(1, &textureID);
+	glBindTexture(GL_TEXTURE_2D, textureID);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, ImageData);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	stbi_image_free(ImageData);
+}
 
 int main(int argc, char *argv[])
 {
@@ -62,10 +100,10 @@ int main(int argc, char *argv[])
 	};*/
 
 	std::vector<Vertex> SquareVerticies;
-	SquareVerticies.push_back(Vertex(-0.5f, 0.5f, -1.0f));
-	SquareVerticies.push_back(Vertex(0.5f, 0.5f, -1.0f));
-	SquareVerticies.push_back(Vertex(0.5f, -0.5f, -1.0f));
-	SquareVerticies.push_back(Vertex(-0.5f, -0.5f, -1.0f));
+	SquareVerticies.push_back(Vertex (vec3(-0.5f, 0.5f, 1.0f), vec2(0,0)));
+	SquareVerticies.push_back(Vertex(vec3(0.5f, 0.5f, 1.0f), vec2(1, 0)));
+	SquareVerticies.push_back(Vertex(vec3(0.5f, -0.5f, 1.0f), vec2(1, 1)));
+	SquareVerticies.push_back(Vertex(vec3(-0.5f, -0.5f, 1.0f), vec2(0,1)));
 
 	unsigned int SquareIndecies[]
 	{
@@ -77,46 +115,11 @@ int main(int argc, char *argv[])
 	//Mesh Tri2(Verticies2, 3);
 	Mesh Square1(&SquareVerticies[0], SquareVerticies.size(), &SquareIndecies[0], 6);
 
-	//--------------------------------------- Write Shader Code -----------------------------------
-	const char* VertexShaderCode =
-		"#version 450\n"
-		"in vec3 vp;"
-		"uniform mat4 model;"
-		"uniform mat4 view;"
-		"uniform mat4 projection;"
-		"void main() {"
-		" gl_Position = projection * view * model * vec4(vp,1.0);"
-		"}";
-
-	const char* FragmentShaderCode =
-		"#version 450\n"
-		"out vec4 frag_colour;"
-		"void main() {"
-		" frag_colour = vec4(1.0, 0.0, 0.0, 1.0);"
-		"}";
-
-	//------------------------------------- Linking and Compiling the Shaders --------------------
-	GLuint VertexShader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(VertexShader, 1, &VertexShaderCode, NULL);
-	glCompileShader(VertexShader);
-	GLuint FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(FragmentShader, 1, &FragmentShaderCode, NULL);
-	glCompileShader(FragmentShader);
-
-	//----------------------------------- Connect Shaders to a Shader Program ---------------------
-	GLuint ShaderProgram = glCreateProgram();
-	glAttachShader(ShaderProgram, VertexShader);
-	glAttachShader(ShaderProgram, FragmentShader);
-
-	//---------------------------------- Link and Validate Shader Program -------------------------
-	glLinkProgram(ShaderProgram);
-	glValidateProgram(ShaderProgram);
-
 	//---------------------------------- Make Camera ----------------------------------------------
 	std::vector<Camera*> ListOfCameras;
-	Camera* Camera1 = new Camera(vec3(0,0,-3));
+	Camera* Camera1 = new Camera(vec3(0,0,3));
 	ListOfCameras.push_back(Camera1);
-	Camera* Camera2 = new Camera(vec3(-3, 0, 0));
+	Camera* Camera2 = new Camera(vec3(3, 0, 0));
 	ListOfCameras.push_back(Camera2);
 	int ActiveCamera = 0;
 
@@ -125,7 +128,7 @@ int main(int argc, char *argv[])
 	float ZRotator;
 
 	//------------------------------------- New Shader Object -----------------------------------
-	Shader* basicShader = new Shader("../Resources/Basic", *ListOfCameras[ActiveCamera]);
+	Shader* basicShader = new Shader("Resources\\Basic",* ListOfCameras[ActiveCamera]);
 
 	//------------------------------------------- Main Loop -----------------------------------------
 	while (true) 
@@ -178,7 +181,7 @@ int main(int argc, char *argv[])
 				}
 				if (event.key.keysym.sym == SDLK_1) 
 				{
-					std::cout << "C Pressed" << std::endl;
+					std::cout << "1 Pressed" << std::endl;
 					ActiveCamera++;
 					if (ActiveCamera > ListOfCameras.size() - 1) 
 					{
@@ -188,13 +191,19 @@ int main(int argc, char *argv[])
 			}
 		}
 
+		glClearColor(0.0f, 0.15f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glViewport(0, 0, 800, 800);
 
 		//Old Triangles
 		//Tril.Draw(XRotator, YRotator, ZRotator);
 		//Tri2.Draw(XRotator, YRotator, ZRotator);
 
 		basicShader->Bind();
+		glActiveTexture(GL_TEXTURE0);
+		GLuint TextureLoc = glGetUniformLocation(basicShader->GetProgram(), "texture_diffuse");
+		glUniform1i(TextureLoc, 0);
+		glBindTexture(GL_TEXTURE_2D, textureID);
 		basicShader->Update(*Square1.m_transform);
 
 		//Square Draw

@@ -15,6 +15,10 @@ public:
 	~Shader();
 	void Update(Transform& transform);
 	void Bind();
+	GLuint GetProgram()
+	{
+		return m_Program;
+	}
 
 private:
 	string Name;

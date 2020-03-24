@@ -1,6 +1,7 @@
 #ifndef MESH_H
 #define MESH_H
 
+#include <iostream>
 #include "Transform.h"
 #include <glm/glm.hpp>
 #include <glew.h>
@@ -19,6 +20,7 @@ private:
 	enum
 	{
 		POSITION_VB,
+		TEXTCOORD_VB,
 		INDEX_VB,
 		NUM_BUFFERS
 	};
