@@ -1,7 +1,5 @@
 #include "Mesh.h"
-#include "Transform.h"
 #include <string>
-#include <vector>
 
 Mesh::Mesh(Vertex* verts, unsigned int vertCount, unsigned int* indices, unsigned int numIndices)
 {
@@ -14,6 +12,21 @@ Mesh::Mesh(Vertex* verts, unsigned int vertCount, unsigned int* indices, unsigne
 	{
 		positions.push_back(verts[i].Position);
 		texCoords.push_back(verts[i].TextureCoord);
+	}
+
+	std::vector<vec3> Normals;
+	Normals.resize(vertCount);
+
+	for (int i = 0; i < numIndices; i += 3) 
+	{
+		vec3 Vert1 = positions[indices[i]];
+		vec3 Vert2 = positions[indices[i + 1]];
+		vec3 Vert3 = positions[indices[i + 2]];
+
+		vec3 normal = triangleNormal(Vert1, Vert2, Vert3);
+		Normals[indices[i]] += normal;
+		Normals[indices[i + 1]] += normal;
+		Normals[indices[i + 2]] += normal;
 	}
 
 	glGenVertexArrays(1, &m_vertexArrayObject);
@@ -29,8 +42,13 @@ Mesh::Mesh(Vertex* verts, unsigned int vertCount, unsigned int* indices, unsigne
 
 	glBindBuffer(GL_ARRAY_BUFFER, m_vertexBufferObject[TEXTCOORD_VB]);
 	glBufferData(GL_ARRAY_BUFFER, vertCount * sizeof(texCoords[0]), &texCoords[0], GL_STATIC_DRAW);
-	glVertexAttribPointer(TEXTCOORD_VB, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+	glVertexAttribPointer(TEXTCOORD_VB, 2, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(TEXTCOORD_VB);
+
+	glBindBuffer(GL_ARRAY_BUFFER, m_vertexBufferObject[NORMAL_VB]);
+	glBufferData(GL_ARRAY_BUFFER, vertCount * sizeof(Normals[0]), &Normals[0], GL_STATIC_DRAW);
+	glVertexAttribPointer(NORMAL_VB, 3, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(NORMAL_VB);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_vertexBufferObject[INDEX_VB]);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, numIndices * sizeof(unsigned int), indices, GL_STATIC_DRAW);

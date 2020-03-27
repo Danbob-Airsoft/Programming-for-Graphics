@@ -6,6 +6,8 @@
 #include <glm/glm.hpp>
 #include <glew.h>
 #include "Vertex.h"
+#include <vector>
+#include <glm/gtx/normal.hpp>
 
 class Mesh
 {
@@ -22,6 +24,7 @@ private:
 		POSITION_VB,
 		TEXTCOORD_VB,
 		INDEX_VB,
+		NORMAL_VB,
 		NUM_BUFFERS
 	};
 

@@ -15,6 +15,7 @@
 #include <vector>
 #include "Vertex.h"
 #include "Shader.h"
+#include "LightBase.h"
 
 GLuint textureID;
 
@@ -45,8 +46,8 @@ void LoadTexture(string TextureLocation)
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, ImageData);
 	glBindTexture(GL_TEXTURE_2D, 0);
@@ -117,7 +118,7 @@ int main(int argc, char *argv[])
 
 	//---------------------------------- Make Camera ----------------------------------------------
 	std::vector<Camera*> ListOfCameras;
-	Camera* Camera1 = new Camera(vec3(0,0,3));
+	Camera* Camera1 = new Camera(vec3(0,0,2));
 	ListOfCameras.push_back(Camera1);
 	Camera* Camera2 = new Camera(vec3(3, 0, 0));
 	ListOfCameras.push_back(Camera2);
@@ -129,6 +130,10 @@ int main(int argc, char *argv[])
 
 	//------------------------------------- New Shader Object -----------------------------------
 	Shader* basicShader = new Shader("Resources\\Basic",* ListOfCameras[ActiveCamera]);
+	LoadTexture("brickwall.jpg");
+
+	//------------------------------------ New Light --------------------------------------------
+	LightBase* light = new LightBase();
 
 	//------------------------------------------- Main Loop -----------------------------------------
 	while (true) 
@@ -204,10 +209,11 @@ int main(int argc, char *argv[])
 		GLuint TextureLoc = glGetUniformLocation(basicShader->GetProgram(), "texture_diffuse");
 		glUniform1i(TextureLoc, 0);
 		glBindTexture(GL_TEXTURE_2D, textureID);
-		basicShader->Update(*Square1.m_transform);
+		basicShader->Update(*Square1.m_transform, *light);
 
 		//Square Draw
 		Square1.Draw(XRotator, YRotator, ZRotator);
+		light->Draw(ListOfCameras[ActiveCamera]);
 
 		SDL_Delay(16);
 

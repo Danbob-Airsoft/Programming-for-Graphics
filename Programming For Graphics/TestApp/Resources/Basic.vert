@@ -2,6 +2,7 @@
 
 in vec3 vp;
 in vec2 TextureCoord;
+in vec3 Normal;
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
