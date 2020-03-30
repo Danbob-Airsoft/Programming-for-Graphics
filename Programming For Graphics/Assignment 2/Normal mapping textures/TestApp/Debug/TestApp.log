@@ -1,0 +1,9 @@
+﻿  TestApp.cpp
+C:\Users\danie\Desktop\Programming For Graphics\TestApp\TestApp.cpp(157,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\TestApp\TestApp.cpp(162,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\TestApp\TestApp.cpp(167,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\TestApp\TestApp.cpp(172,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\TestApp\TestApp.cpp(177,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\TestApp\TestApp.cpp(182,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\TestApp\TestApp.cpp(194,23): warning C4018: '>': signed/unsigned mismatch
+  TestApp.vcxproj -> C:\Users\danie\Desktop\Programming For Graphics\TestApp\Debug\TestApp.exe

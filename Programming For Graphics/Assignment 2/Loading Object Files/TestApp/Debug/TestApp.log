@@ -1,0 +1,3 @@
+﻿  OBJLoader.cpp
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\OBJLoader.cpp(95,20): warning C4018: '<': signed/unsigned mismatch
+  TestApp.vcxproj -> C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\Debug\TestApp.exe
