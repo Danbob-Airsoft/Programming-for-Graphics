@@ -1,3 +1,11 @@
-﻿  OBJLoader.cpp
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\OBJLoader.cpp(95,20): warning C4018: '<': signed/unsigned mismatch
+﻿  TestApp.cpp
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\TestApp.cpp(174,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\TestApp.cpp(179,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\TestApp.cpp(184,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\TestApp.cpp(189,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\TestApp.cpp(194,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\TestApp.cpp(199,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\TestApp.cpp(212,23): warning C4018: '>': signed/unsigned mismatch
+  Vertex.cpp
+  Generating Code...
   TestApp.vcxproj -> C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\Debug\TestApp.exe

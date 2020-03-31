@@ -142,12 +142,15 @@ int main(int argc, char *argv[])
 
 	vector<glm::uint> Indecies;
 
-	vector<Vertex> LoadedVerts = OBJLoader::LoadOBJ("Resources/Block", "blocks_01.obj", AmbiantLoc, DiffuseLoc, SpecLoc, NormalLoc, Indecies);
+	std::vector<Vertex> LoadedVerts = OBJLoader::LoadOBJ("Resources/Block", "blocks_01.obj", AmbiantLoc, DiffuseLoc, SpecLoc, NormalLoc, Indecies);
 
 	GLuint AmbiantTextureID = LoadTexture("Resources/Block/" + AmbiantLoc);
 	GLuint DiffuseTextureID = LoadTexture("Resources/Block/" + DiffuseLoc);
 	GLuint SpeculerTextureID = LoadTexture("Resources/Block/" + SpecLoc);
 	GLuint NormalTextureID = LoadTexture("Resources/Block/" + NormalLoc);
+
+	//Create Cube Mesh
+	Mesh Cube(&LoadedVerts[0], LoadedVerts.size(), &LoadedVerts[0], Indecies.size());
 
 	//------------------------------------ New Light --------------------------------------------
 	LightBase* light = new LightBase();
@@ -199,7 +202,8 @@ int main(int argc, char *argv[])
 				{
 					//Tril.m_transform->SetRotation(vec3(0, 0, 0));
 					//Tri2.m_transform->SetRotation(vec3(0, 0, 0));
-					Square1.m_transform->SetRotation(vec3(0, 0, 0));
+					//Square1.m_transform->SetRotation(vec3(0, 0, 0));
+					Cube.m_transform->SetRotation(vec3(0, 0, 0));
 				}
 				if (event.key.keysym.sym == SDLK_1) 
 				{
@@ -217,10 +221,6 @@ int main(int argc, char *argv[])
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glViewport(0, 0, 800, 800);
 
-		//Old Triangles
-		//Tril.Draw(XRotator, YRotator, ZRotator);
-		//Tri2.Draw(XRotator, YRotator, ZRotator);
-
 		basicShader->Bind();
 		glActiveTexture(GL_TEXTURE0);
 		GLuint TextureLoc = glGetUniformLocation(basicShader->GetProgram(), "texture_diffuse");
@@ -232,10 +232,15 @@ int main(int argc, char *argv[])
 		glUniform1i(TextureLoc, 1);
 		glBindTexture(GL_TEXTURE_2D, NormalTextureID);
 		
-		basicShader->Update(*Square1.m_transform, *light);
+		//basicShader->Update(*Square1.m_transform, *light);
+		basicShader->Update(*Cube.m_transform, *light);
 
 		//Square Draw
-		Square1.Draw(XRotator, YRotator, ZRotator);
+		//Square1.Draw(XRotator, YRotator, ZRotator);
+
+		//Cube Draw
+		Cube->Draw(XRotator, YRotator, ZRotator);
+
 		light->Draw(ListOfCameras[ActiveCamera]);
 
 		SDL_Delay(16);

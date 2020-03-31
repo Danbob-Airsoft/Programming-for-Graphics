@@ -64,7 +64,7 @@ vector<Vertex> OBJLoader::LoadOBJ(const string& FolderLoc, const string Filename
 					Vertex vertsInFace[3];
 					unsigned int TmpPosition[3], TmpTexCoords[3], TmpNormals[3];
 
-					sscanf_s(FaceValues.c_str(), " %d%d%d %d%d%d %d%d%d", &TmpPosition[0], &TmpTexCoords[0], &TmpNormals[0],
+					sscanf_s(FaceValues.c_str(), " %d/%d/%d %d/%d/%d %d/%d/%d", &TmpPosition[0], &TmpTexCoords[0], &TmpNormals[0],
 						&TmpPosition[1], &TmpTexCoords[1], &TmpNormals[1],
 						&TmpPosition[2], &TmpTexCoords[2], &TmpNormals[2]);
 
@@ -100,7 +100,7 @@ vector<Vertex> OBJLoader::LoadOBJ(const string& FolderLoc, const string Filename
 	return FinalVerts;
 }
 
-void OBJLoader::LoadMaterial(const string& MatLibLoc, string& AmbiantLoc, string DiffLoc, string& specLoc, string& NormalLoc)
+void OBJLoader::LoadMaterial(const string& MatLibLoc, string& AmbiantLoc, string& DiffLoc, string& specLoc, string& NormalLoc)
 {
 	std::ifstream file;
 	const char* fileNameChar = MatLibLoc.c_str();
@@ -116,23 +116,23 @@ void OBJLoader::LoadMaterial(const string& MatLibLoc, string& AmbiantLoc, string
 			if (line[0] != '#') 
 			{
 				string FirstWord = line.substr(0, line.find(' '));
-				if (strstr(FirstWord.c_str(), "newmt1")) 
+				if (strstr(FirstWord.c_str(),"newmt1")) 
 				{
 					MatName = line.substr(line.find(' ') + 1, line.find('\n'));
 				}
-				else if (strstr(FirstWord.c_str(), "map_Ka"))
+				else if (strstr(FirstWord.c_str(),"map_Ka"))
 				{
 					AmbiantLoc = line.substr(line.find(' ') + 1, line.find('\n'));
 				}
-				else if (strstr(FirstWord.c_str(), "map_Kd"))
+				else if (strstr(FirstWord.c_str(),"map_Kd"))
 				{
 					DiffLoc = line.substr(line.find(' ') + 1, line.find('\n'));
 				}
-				else if (strstr(FirstWord.c_str(), "map_Ks"))
+				else if (strstr(FirstWord.c_str(),"map_Ks"))
 				{
 					specLoc = line.substr(line.find(' ') + 1, line.find('\n'));
 				}
-				else if (strstr(FirstWord.c_str(), "map_bump"))
+				else if (strstr(FirstWord.c_str(),"map_bump"))
 				{
 					NormalLoc = line.substr(line.find(' ') + 1, line.find('\n'));
 				}

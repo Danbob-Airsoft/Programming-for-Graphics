@@ -17,7 +17,7 @@ class OBJLoader
 public:
 	static vector<Vertex> LoadOBJ(const string& FolderLocconst, const string FileLoc, string& AmbiantLoc, string& DiffLoc, string& specLoc, string& NormalLoc, vector<glm::uint>& indicies);
 
-	static void LoadMaterial(const string& MatLibLoc, string& AmbiantLoc, string DiffLoc, string& specLoc, string& NormalLoc);
+	static void LoadMaterial(const string& MatLibLoc, string& AmbiantLoc, string& DiffLoc, string& specLoc, string& NormalLoc);
 
 };
 

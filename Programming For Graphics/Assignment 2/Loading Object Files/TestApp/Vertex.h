@@ -13,7 +13,10 @@ struct Vertex
 	glm::vec3 Tangent;
 	glm::vec3 BiTangent;
 
-	Vertex();
+	Vertex() 
+	{
+
+	}
 
 	Vertex(const float X, const float Y, const float Z) 
 	{
