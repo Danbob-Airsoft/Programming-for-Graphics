@@ -121,7 +121,18 @@ int main(int argc, char *argv[])
 	std::vector<GLuint> Sprites;
 
 	//Take int input for number of sprites to attempt to load
-	int NumberOfSpritesToLoad = 10;
+	int SpriteCountIn = 0;
+	//Take Input
+	std::cin >> SpriteCountIn;
+	//Check Input
+	while (std::cin.fail()) {
+		std::cout << "Error, Invalid Input" << std::endl;
+		std::cin.clear();
+		std::cin.ignore(256, '\n');
+		std::cin >> SpriteCountIn;
+	}
+
+	int NumberOfSpritesToLoad = SpriteCountIn;
 
 	//Loop that ammount of times and attempt to load related texture
 	for (int i = 0; i < NumberOfSpritesToLoad; i++) 
