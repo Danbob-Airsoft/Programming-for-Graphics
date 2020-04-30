@@ -117,11 +117,11 @@ int main(int argc, char *argv[])
 	//------------------------------------------ Mesh Setup -----------------------------------
 	//Mesh Tril(Verticies, 3);
 	//Mesh Tri2(Verticies2, 3);
-	Mesh Square1(&SquareVerticies[0], SquareVerticies.size(), &SquareIndecies[0], 6);
+	//Mesh Square1(&SquareVerticies[0], SquareVerticies.size(), &SquareIndecies[0], 6);
 
 	//---------------------------------- Make Camera ----------------------------------------------
 	std::vector<Camera*> ListOfCameras;
-	Camera* Camera1 = new Camera(vec3(0,0,1.5f));
+	Camera* Camera1 = new Camera(vec3(0,0,10));
 	ListOfCameras.push_back(Camera1);
 	Camera* Camera2 = new Camera(vec3(3, 0, 0));
 	ListOfCameras.push_back(Camera2);
@@ -150,7 +150,8 @@ int main(int argc, char *argv[])
 	GLuint NormalTextureID = LoadTexture("Resources/Block/" + NormalLoc);
 
 	//Create Cube Mesh
-	Mesh Cube(&LoadedVerts[0], LoadedVerts.size(), &LoadedVerts[0], Indecies.size());
+	Mesh Cube(&LoadedVerts[0], LoadedVerts.size(), &Indecies[0], Indecies.size());
+	Cube.m_transform->SetPosition(vec3(0, 0, -70));
 
 	//------------------------------------ New Light --------------------------------------------
 	LightBase* light = new LightBase();
@@ -239,7 +240,7 @@ int main(int argc, char *argv[])
 		//Square1.Draw(XRotator, YRotator, ZRotator);
 
 		//Cube Draw
-		Cube->Draw(XRotator, YRotator, ZRotator);
+		Cube.Draw(XRotator, YRotator, ZRotator);
 
 		light->Draw(ListOfCameras[ActiveCamera]);
 
