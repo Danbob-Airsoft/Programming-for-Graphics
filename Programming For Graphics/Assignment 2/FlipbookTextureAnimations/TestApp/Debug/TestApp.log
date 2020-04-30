@@ -1,0 +1,9 @@
+﻿  TestApp.cpp
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\FlipbookTextureAnimations\TestApp\TestApp.cpp(182,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\FlipbookTextureAnimations\TestApp\TestApp.cpp(187,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\FlipbookTextureAnimations\TestApp\TestApp.cpp(192,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\FlipbookTextureAnimations\TestApp\TestApp.cpp(197,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\FlipbookTextureAnimations\TestApp\TestApp.cpp(202,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\FlipbookTextureAnimations\TestApp\TestApp.cpp(207,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\FlipbookTextureAnimations\TestApp\TestApp.cpp(219,23): warning C4018: '>': signed/unsigned mismatch
+  TestApp.vcxproj -> C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\FlipbookTextureAnimations\TestApp\Debug\TestApp.exe
