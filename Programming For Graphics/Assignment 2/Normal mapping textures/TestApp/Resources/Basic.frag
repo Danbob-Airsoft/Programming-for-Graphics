@@ -27,7 +27,13 @@ void main()
 	vec3 lightDir = normalize(FragLightPos - FragPos);
 	float diff = max(dot(normal, lightDir),0.0);
 	vec3 diffuse = diff * FragLightColor;
-	//frag_colour = vec4(vec3(FragTextureCoord.x, FragTextureCoord.y,0), 1.0f);
-	//frag_colour = vec4(texture2D(texture_diffuse, FragTextureCoord).rgb,1);
-	result = vec4(texture2D(texture_diffuse, FragTextureCoord).rgb * (ambient + diffuse), 1);
+
+	//Specular
+	float specularStrength = 10f;
+	vec3 viewDir = normalize(FragLightPos - FragPos);
+	vec3 reflectDir = reflect(-lightDir, normal);
+	float spec = pow(max(dot(normal, reflectDir), 0.0),32.0);
+	vec3 specular = vec3(specularStrength * spec);
+
+	result = vec4(texture2D(texture_diffuse, FragTextureCoord).rgb * (ambient + diffuse + specular), 1);
 }

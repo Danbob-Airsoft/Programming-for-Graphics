@@ -1,0 +1,8 @@
+﻿  TestApp.cpp
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Point Lights\TestApp\TestApp.cpp(153,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Point Lights\TestApp\TestApp.cpp(159,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Point Lights\TestApp\TestApp.cpp(165,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Point Lights\TestApp\TestApp.cpp(171,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Point Lights\TestApp\TestApp.cpp(177,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Point Lights\TestApp\TestApp.cpp(183,20): warning C4305: '=': truncation from 'double' to 'float'
+  TestApp.vcxproj -> C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Point Lights\TestApp\Debug\TestApp.exe

@@ -1,9 +1,9 @@
 ﻿  TestApp.cpp
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\TestApp.cpp(175,20): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\TestApp.cpp(180,21): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\TestApp.cpp(185,21): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\TestApp.cpp(190,20): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\TestApp.cpp(195,21): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\TestApp.cpp(200,20): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\TestApp.cpp(213,23): warning C4018: '>': signed/unsigned mismatch
-  TestApp.vcxproj -> C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Loading Object Files\TestApp\Debug\TestApp.exe
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Required Features\TestApp\TestApp.cpp(175,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Required Features\TestApp\TestApp.cpp(180,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Required Features\TestApp\TestApp.cpp(185,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Required Features\TestApp\TestApp.cpp(190,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Required Features\TestApp\TestApp.cpp(195,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Required Features\TestApp\TestApp.cpp(200,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Required Features\TestApp\TestApp.cpp(213,23): warning C4018: '>': signed/unsigned mismatch
+  TestApp.vcxproj -> C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Required Features\TestApp\Debug\TestApp.exe
