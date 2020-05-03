@@ -85,13 +85,14 @@ Mesh::~Mesh()
 	glDeleteVertexArrays(1, &m_vertexArrayObject);
 }
 
-void Mesh::CalculateTangentsBitangent(Vertex* verticies, unsigned int vertCount, unsigned int* indicies, unsigned int numIndices)
+void Mesh::CalculateTangentsBitangent(Vertex* vertices, unsigned int vertCount, unsigned int* indices, unsigned int numIndices)
 {
-	for (unsigned int i = 0; i < numIndices; i += 3) 
+	// calculate tangent and bitangent
+	for (unsigned int i = 0; i < numIndices; i += 3)
 	{
-		Vertex v0 = verticies[indicies[i]];
-		Vertex v1 = verticies[indicies[i + 1]];
-		Vertex v2 = verticies[indicies[i + 2]];
+		Vertex v0 = vertices[indices[i]];
+		Vertex v1 = vertices[indices[i + 1]];
+		Vertex v2 = vertices[indices[i + 2]];
 
 		vec3 edge1 = v1.Position - v0.Position;
 		vec3 edge2 = v2.Position - v0.Position;
@@ -101,36 +102,31 @@ void Mesh::CalculateTangentsBitangent(Vertex* verticies, unsigned int vertCount,
 		GLfloat deltaU2 = v2.TextureCoord.x - v0.TextureCoord.x;
 		GLfloat deltaV2 = v2.TextureCoord.y - v0.TextureCoord.y;
 
-		GLfloat f = 1.0f / (deltaU1 * deltaV2 - deltaU2 - deltaV1);
+		GLfloat f = 1.0f / (deltaU1 * deltaV2 - deltaV1 * deltaU2);
 
 		vec3 tangent;
 		vec3 biTangent;
 
-		tangent.x = f * (deltaV2 * edge1.x - deltaV1 * edge2.x);
-		tangent.y = f * (deltaV2 * edge1.y - deltaV1 * edge2.y);
-		tangent.z = f * (deltaV2 * edge1.z - deltaV1 * edge2.z);
+		tangent = f * (edge1 * deltaV2 - edge2 * deltaV1);
 
-		biTangent.x = f * (-deltaU2 * edge1.x + deltaU1 * edge2.x);
-		biTangent.y = f * (-deltaU2 * edge1.y + deltaU1 * edge2.y);
-		biTangent.z = f * (-deltaU2 * edge1.z + deltaU1 * edge2.z);
+		biTangent = f * (edge2 * deltaU1 - edge1 * deltaU2);
 
-		v0.Tangent += tangent;
-		v1.Tangent += tangent;
-		v2.Tangent += tangent;
+		v0.Tangent = tangent;
+		v1.Tangent = tangent;
+		v2.Tangent = tangent;
 
-		v0.BiTangent += biTangent;
-		v1.BiTangent += biTangent;
-		v2.BiTangent += biTangent;
+		v0.BiTangent = biTangent;
+		v1.BiTangent = biTangent;
+		v2.BiTangent = biTangent;
 
-		verticies[indicies[i]] = v0;
-		verticies[indicies[i + 1]] = v1;
-		verticies[indicies[i + 2]] = v2;
+		vertices[indices[i]] = v0;
+		vertices[indices[i + 1]] = v1;
+		vertices[indices[i + 2]] = v2;
 	}
 
-	for (unsigned int i = 0; i < vertCount; i++) 
+	for (unsigned int i = 0; i < vertCount; i++)
 	{
-		verticies[i].Tangent = normalize(verticies[i].Tangent);
-		verticies[i].BiTangent = normalize(verticies[i].BiTangent);
+		vertices[i].Tangent = normalize(vertices[i].Tangent);
+		vertices[i].BiTangent = normalize(vertices[i].BiTangent);
 	}
-
 }

@@ -1,9 +1,46 @@
-﻿  TestApp.cpp
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Normal mapping textures\TestApp\TestApp.cpp(145,20): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Normal mapping textures\TestApp\TestApp.cpp(150,21): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Normal mapping textures\TestApp\TestApp.cpp(155,21): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Normal mapping textures\TestApp\TestApp.cpp(160,20): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Normal mapping textures\TestApp\TestApp.cpp(165,21): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Normal mapping textures\TestApp\TestApp.cpp(170,20): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Normal mapping textures\TestApp\TestApp.cpp(182,23): warning C4018: '>': signed/unsigned mismatch
-  TestApp.vcxproj -> C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Normal mapping textures\TestApp\Debug\TestApp.exe
+﻿  Camera.cpp
+  LightBase.cpp
+  Mesh.cpp
+C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Normal mapping textures\TestApp\Mesh.cpp(26,20): warning C4018: '<': signed/unsigned mismatch
+  Shader.cpp
+  TestApp.cpp
+C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Normal mapping textures\TestApp\TestApp.cpp(145,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Normal mapping textures\TestApp\TestApp.cpp(150,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Normal mapping textures\TestApp\TestApp.cpp(155,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Normal mapping textures\TestApp\TestApp.cpp(160,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Normal mapping textures\TestApp\TestApp.cpp(165,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Normal mapping textures\TestApp\TestApp.cpp(170,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Normal mapping textures\TestApp\TestApp.cpp(182,23): warning C4018: '>': signed/unsigned mismatch
+  Transform.cpp
+  Vertex.cpp
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4286: symbol '___glewUseProgram' defined in 'glew32s.lib(glew.obj)' is imported by 'LightBase.obj'
+LINK : warning LNK4286: symbol '___glewUseProgram' defined in 'glew32s.lib(glew.obj)' is imported by 'Shader.obj'
+LINK : warning LNK4286: symbol '___glewBindBuffer' defined in 'glew32s.lib(glew.obj)' is imported by 'Mesh.obj'
+LINK : warning LNK4286: symbol '___glewBufferData' defined in 'glew32s.lib(glew.obj)' is imported by 'Mesh.obj'
+LINK : warning LNK4286: symbol '___glewGenBuffers' defined in 'glew32s.lib(glew.obj)' is imported by 'Mesh.obj'
+LINK : warning LNK4286: symbol '___glewEnableVertexAttribArray' defined in 'glew32s.lib(glew.obj)' is imported by 'Mesh.obj'
+LINK : warning LNK4286: symbol '___glewVertexAttribPointer' defined in 'glew32s.lib(glew.obj)' is imported by 'Mesh.obj'
+LINK : warning LNK4286: symbol '___glewBindVertexArray' defined in 'glew32s.lib(glew.obj)' is imported by 'Mesh.obj'
+LINK : warning LNK4286: symbol '___glewDeleteVertexArrays' defined in 'glew32s.lib(glew.obj)' is imported by 'Mesh.obj'
+LINK : warning LNK4286: symbol '___glewGenVertexArrays' defined in 'glew32s.lib(glew.obj)' is imported by 'Mesh.obj'
+LINK : warning LNK4286: symbol '___glewAttachShader' defined in 'glew32s.lib(glew.obj)' is imported by 'Shader.obj'
+LINK : warning LNK4286: symbol '___glewCompileShader' defined in 'glew32s.lib(glew.obj)' is imported by 'Shader.obj'
+LINK : warning LNK4286: symbol '___glewCreateProgram' defined in 'glew32s.lib(glew.obj)' is imported by 'Shader.obj'
+LINK : warning LNK4286: symbol '___glewCreateShader' defined in 'glew32s.lib(glew.obj)' is imported by 'Shader.obj'
+LINK : warning LNK4286: symbol '___glewDeleteProgram' defined in 'glew32s.lib(glew.obj)' is imported by 'Shader.obj'
+LINK : warning LNK4286: symbol '___glewDeleteShader' defined in 'glew32s.lib(glew.obj)' is imported by 'Shader.obj'
+LINK : warning LNK4286: symbol '___glewDetachShader' defined in 'glew32s.lib(glew.obj)' is imported by 'Shader.obj'
+LINK : warning LNK4286: symbol '___glewGetProgramInfoLog' defined in 'glew32s.lib(glew.obj)' is imported by 'Shader.obj'
+LINK : warning LNK4286: symbol '___glewGetProgramiv' defined in 'glew32s.lib(glew.obj)' is imported by 'Shader.obj'
+LINK : warning LNK4286: symbol '___glewGetShaderInfoLog' defined in 'glew32s.lib(glew.obj)' is imported by 'Shader.obj'
+LINK : warning LNK4286: symbol '___glewGetShaderiv' defined in 'glew32s.lib(glew.obj)' is imported by 'Shader.obj'
+LINK : warning LNK4286: symbol '___glewGetUniformLocation' defined in 'glew32s.lib(glew.obj)' is imported by 'Shader.obj'
+LINK : warning LNK4286: symbol '___glewLinkProgram' defined in 'glew32s.lib(glew.obj)' is imported by 'Shader.obj'
+LINK : warning LNK4286: symbol '___glewShaderSource' defined in 'glew32s.lib(glew.obj)' is imported by 'Shader.obj'
+LINK : warning LNK4286: symbol '___glewUniform3f' defined in 'glew32s.lib(glew.obj)' is imported by 'Shader.obj'
+LINK : warning LNK4286: symbol '___glewUniformMatrix4fv' defined in 'glew32s.lib(glew.obj)' is imported by 'Shader.obj'
+LINK : warning LNK4286: symbol '___glewValidateProgram' defined in 'glew32s.lib(glew.obj)' is imported by 'Shader.obj'
+glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Normal mapping textures\TestApp\Debug\vc120.pdb'; linking object as if no debug info
+  TestApp.vcxproj -> C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Normal mapping textures\TestApp\Debug\TestApp.exe

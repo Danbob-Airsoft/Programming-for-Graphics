@@ -1,12 +1,3 @@
 ﻿  Mesh.cpp
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Required Features\TestApp\Mesh.cpp(26,20): warning C4018: '<': signed/unsigned mismatch
-  TestApp.cpp
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Required Features\TestApp\TestApp.cpp(145,20): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Required Features\TestApp\TestApp.cpp(150,21): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Required Features\TestApp\TestApp.cpp(155,21): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Required Features\TestApp\TestApp.cpp(160,20): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Required Features\TestApp\TestApp.cpp(165,21): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Required Features\TestApp\TestApp.cpp(170,20): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Required Features\TestApp\TestApp.cpp(181,23): warning C4018: '>': signed/unsigned mismatch
-  Generating Code...
-  TestApp.vcxproj -> C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Required Features\TestApp\Debug\TestApp.exe
+C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Required Features\TestApp\Mesh.cpp(26,20): warning C4018: '<': signed/unsigned mismatch
+  TestApp.vcxproj -> C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Required Features\TestApp\Debug\TestApp.exe

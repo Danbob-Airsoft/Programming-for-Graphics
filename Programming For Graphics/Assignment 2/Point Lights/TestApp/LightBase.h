@@ -14,9 +14,10 @@ public:
 
 	void Draw(Camera* Cam);
 
+	Transform m_Transform;
+
 	vec3 M_Color;
 
-	Transform m_Transform;
 
 private:
 };

@@ -28,7 +28,7 @@ GLuint LoadTexture(string TextureLocation)
 	{
 		std::cerr << "Texture Loading Failed for Texture: " << TextureLocation << std::endl;
 	}
-	GLenum format;
+	GLenum format = 0;
 	if (numComponents == 1) 
 	{
 		format = GL_RED;
@@ -124,7 +124,6 @@ int main(int argc, char *argv[])
 
 	//------------------------------------ New Light --------------------------------------------
 	LightBase* light = new LightBase();
-	light->m_Transform.SetPosition(Camera1->CameraTransform->GetPosition());
 
 	//------------------------------------------- Main Loop -----------------------------------------
 	while (true) 
@@ -201,10 +200,13 @@ int main(int argc, char *argv[])
 		glUniform1i(TextureLoc, 1);
 		glBindTexture(GL_TEXTURE_2D, NormalTextureID);
 		
-		basicShader->Update(*Cube.m_transform, *light);
-
+		light->m_Transform.SetPosition(Camera1->CameraTransform->GetPosition());
+	
 		//Cube Draw
 		Cube.Draw(XRotator, YRotator, ZRotator);
+
+		basicShader->Update(*Cube.m_transform, *light);
+
 
 		light->Draw(ListOfCameras[ActiveCamera]);
 

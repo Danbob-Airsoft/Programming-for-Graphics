@@ -103,7 +103,7 @@ int main(int argc, char *argv[])
 	Mesh Square1(&SquareVerticies[0], SquareVerticies.size(), &SquareIndecies[0], 6);
 
 	//---------------------------------- Make Camera ----------------------------------------------
-	Camera* Camera1 = new Camera(vec3(0,0,0.5f));
+	Camera* Camera1 = new Camera(vec3(0,0,-1.0f));
 
 	float XRotator;
 	float YRotator;
@@ -176,16 +176,16 @@ int main(int argc, char *argv[])
 				{
 					float xPos = Square1.m_transform->GetPosition().x;
 					float yPos = Square1.m_transform->GetPosition().y;
-					float zPos = Square1.m_transform->GetPosition().z - 0.2f;
+					float zPos = Square1.m_transform->GetPosition().z + 0.2f;
 					Square1.m_transform->SetPosition(vec3(xPos, yPos, zPos));
 				}
 				if (event.key.keysym.sym == SDLK_v)
 				{
-					if (Square1.m_transform->GetPosition().z < 0)
+					if (Square1.m_transform->GetPosition().z > 0)
 					{
 						float xPos = Square1.m_transform->GetPosition().x;
 						float yPos = Square1.m_transform->GetPosition().y;
-						float zPos = Square1.m_transform->GetPosition().z + 0.2f;
+						float zPos = Square1.m_transform->GetPosition().z - 0.2f;
 						Square1.m_transform->SetPosition(vec3(xPos, yPos, zPos));
 					}
 					else if (Square1.m_transform->GetPosition().z > 0) 

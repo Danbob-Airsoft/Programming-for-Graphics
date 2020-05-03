@@ -1,3 +1,8 @@
-﻿  Shader.cpp
-C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Point Lights\TestApp\Shader.cpp(128,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  TestApp.vcxproj -> C:\Users\danie\Desktop\Programming For Graphics\Assignment 2\Point Lights\TestApp\Debug\TestApp.exe
+﻿  TestApp.cpp
+C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Point Lights\TestApp\TestApp.cpp(137,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Point Lights\TestApp\TestApp.cpp(143,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Point Lights\TestApp\TestApp.cpp(149,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Point Lights\TestApp\TestApp.cpp(155,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Point Lights\TestApp\TestApp.cpp(161,21): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Point Lights\TestApp\TestApp.cpp(167,20): warning C4305: '=': truncation from 'double' to 'float'
+  TestApp.vcxproj -> C:\Users\danie\Documents\GitHub\Programming-for-Graphics\Programming For Graphics\Assignment 2\Point Lights\TestApp\Debug\TestApp.exe
