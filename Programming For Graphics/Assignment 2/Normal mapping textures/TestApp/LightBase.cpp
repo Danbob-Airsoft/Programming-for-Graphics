@@ -16,25 +16,25 @@ void LightBase::Draw(Camera* Cam)
 	glLoadMatrixf((const GLfloat*)&MV[0]);
 
 	glBegin(GL_LINES);
-		glm::vec3 p1 = this->m_Transform.GetPosition();
-		glm::vec3 p2 = p1;
+	glm::vec3 p1 = this->m_Transform.GetPosition();
+	glm::vec3 p2 = p1;
 
-		glColor3f(1, 0, 0);
-		glVertex3fv(&p1.x);
-		p2 = p1 + glm::vec3(1, 0, 0) * 0.1f;
-		glColor3f(1, 0, 0);
-		glVertex3fv(&p2.x);
+	glColor3f(1, 0, 0);
+	glVertex3fv(&p1.x);
+	p2 = p1 + glm::vec3(1, 0, 0) * 0.1f;
+	glColor3f(1, 0, 0);
+	glVertex3fv(&p2.x);
 
-		glColor3f(0, 1, 0);
-		glVertex3fv(&p1.x);
-		p2 = p1 + glm::vec3(0, 1, 0) * 0.1f;
-		glColor3f(0, 1, 0);
-		glVertex3fv(&p2.x);
+	glColor3f(0, 1, 0);
+	glVertex3fv(&p1.x);
+	p2 = p1 + glm::vec3(0, 1, 0) * 0.1f;
+	glColor3f(0, 1, 0);
+	glVertex3fv(&p2.x);
 
-		glColor3f(0, 0, 1);
-		glVertex3fv(&p1.x);
-		p2 = p1 + glm::vec3(0, 0, 1) * 0.1f;
-		glColor3f(0, 0, 1);
-		glVertex3fv(&p2.x);
+	glColor3f(0, 0, 1);
+	glVertex3fv(&p1.x);
+	p2 = p1 + glm::vec3(0, 0, 1) * 0.1f;
+	glColor3f(0, 0, 1);
+	glVertex3fv(&p2.x);
 	glEnd();
 }

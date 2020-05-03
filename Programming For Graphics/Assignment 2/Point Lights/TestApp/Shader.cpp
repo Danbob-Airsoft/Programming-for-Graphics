@@ -125,7 +125,7 @@ void Shader::Update(Transform& transform, LightBase& light)
 		std::pow(transform.GetPosition().y - light.m_Transform.GetPosition().y, 2.0f)
 		+ std::pow(transform.GetPosition().z - light.m_Transform.GetPosition().z, 2.0f));
 	//Decrease into ofset for light intensity
-	float LightIntensity = (Distance - 1.5) / 5.0f;
+	float LightIntensity = (Distance - 0.5) / 10.0f;
 	std::cout << LightIntensity << std::endl;
 
 	mat4 projection = m_Camera->GetPerspective();
@@ -141,6 +141,7 @@ void Shader::Update(Transform& transform, LightBase& light)
 	glUniform3f(m_Uniforms[FRAG_LIGHTPOS_U], light.m_Transform.GetPosition().x, light.m_Transform.GetPosition().y, light.m_Transform.GetPosition().z);
 
 	glUniform3f(m_Uniforms[FRAG_LIGHTCOLOR_U], light.M_Color.x, light.M_Color.y, light.M_Color.z);
+
 	
 }
 

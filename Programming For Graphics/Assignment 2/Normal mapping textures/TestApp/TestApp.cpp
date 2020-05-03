@@ -22,12 +22,15 @@ GLuint LoadTexture(string TextureLocation)
 	GLuint textureID;
 
 	int width, height, numComponents;
+
 	unsigned char* ImageData = stbi_load(TextureLocation.c_str(), &width, &height, &numComponents, STBI_rgb_alpha);
+
 	if (ImageData == NULL) 
 	{
 		std::cerr << "Texture Loading Failed for Texture: " << TextureLocation << std::endl;
 	}
-	GLenum format;
+
+	GLenum format = 0;
 	if (numComponents == 1) 
 	{
 		format = GL_RED;
@@ -50,7 +53,9 @@ GLuint LoadTexture(string TextureLocation)
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, ImageData);
+
 	glBindTexture(GL_TEXTURE_2D, 0);
+
 	stbi_image_free(ImageData);
 
 	return textureID;
@@ -86,22 +91,6 @@ int main(int argc, char *argv[])
 		std::cout << "Glew Failed to Initilaize" << std::endl;
 	}
 
-	//------------------------------------------ Triangle Setup ------------------------------------
-	/*float Verticies[]
-	{
-		-0.5f, 0.5f, 0.0f,
-		0.5f, 0.5f, 0.0f,
-		-0.5f, -0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-	};*/
-
-	/*float Verticies2[]
-	{
-		0.5f, 0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-		-0.5f, -0.5f, 0.0f
-	};*/
-
 	std::vector<Vertex> SquareVerticies;
 	SquareVerticies.push_back(Vertex (vec3(-0.5f, 0.5f, 1.0f), vec2(0,0)));
 	SquareVerticies.push_back(Vertex(vec3(0.5f, 0.5f, 1.0f), vec2(1, 0)));
@@ -114,8 +103,6 @@ int main(int argc, char *argv[])
 	};
 
 	//------------------------------------------ Mesh Setup -----------------------------------
-	//Mesh Tril(Verticies, 3);
-	//Mesh Tri2(Verticies2, 3);
 	Mesh Square1(&SquareVerticies[0], SquareVerticies.size(), &SquareIndecies[0], 6);
 
 	//---------------------------------- Make Camera ----------------------------------------------
@@ -137,6 +124,7 @@ int main(int argc, char *argv[])
 
 	//------------------------------------ New Light --------------------------------------------
 	LightBase* light = new LightBase();
+	light->m_Transform.SetPosition(ListOfCameras[ActiveCamera]->CameraTransform->GetPosition());
 
 	//------------------------------------------- Main Loop -----------------------------------------
 	while (true) 
@@ -202,10 +190,6 @@ int main(int argc, char *argv[])
 		glClearColor(0.0f, 0.15f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glViewport(0, 0, 800, 800);
-
-		//Old Triangles
-		//Tril.Draw(XRotator, YRotator, ZRotator);
-		//Tri2.Draw(XRotator, YRotator, ZRotator);
 
 		basicShader->Bind();
 		glActiveTexture(GL_TEXTURE0);

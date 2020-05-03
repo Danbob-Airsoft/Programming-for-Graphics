@@ -20,8 +20,8 @@ struct Vertex
 
 		TextureCoord = { 0, 0 };
 
-		Tangent = glm::vec3(0,0,0);
-		BiTangent = glm::vec3(0,0,0);
+		Tangent = glm::vec3(0);
+		BiTangent = glm::vec3(0);
 	}
 
 	Vertex(const Vertex& vert) 

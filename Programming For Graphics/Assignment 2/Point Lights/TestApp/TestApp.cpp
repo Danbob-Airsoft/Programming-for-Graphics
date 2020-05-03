@@ -87,26 +87,12 @@ int main(int argc, char *argv[])
 	}
 
 	//------------------------------------------ Triangle Setup ------------------------------------
-	/*float Verticies[]
-	{
-		-0.5f, 0.5f, 0.0f,
-		0.5f, 0.5f, 0.0f,
-		-0.5f, -0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-	};*/
-
-	/*float Verticies2[]
-	{
-		0.5f, 0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-		-0.5f, -0.5f, 0.0f
-	};*/
 
 	std::vector<Vertex> SquareVerticies;
-	SquareVerticies.push_back(Vertex (vec3(-0.5f, 0.5f, 1.0f), vec2(0,0)));
-	SquareVerticies.push_back(Vertex(vec3(0.5f, 0.5f, 1.0f), vec2(1, 0)));
-	SquareVerticies.push_back(Vertex(vec3(0.5f, -0.5f, 1.0f), vec2(1, 1)));
-	SquareVerticies.push_back(Vertex(vec3(-0.5f, -0.5f, 1.0f), vec2(0,1)));
+	SquareVerticies.push_back(Vertex (vec3(-0.5f, 0.5f, 0.0f), vec2(0,0)));
+	SquareVerticies.push_back(Vertex(vec3(0.5f, 0.5f, 0.0f), vec2(1, 0)));
+	SquareVerticies.push_back(Vertex(vec3(0.5f, -0.5f, 0.0f), vec2(1, 1)));
+	SquareVerticies.push_back(Vertex(vec3(-0.5f, -0.5f, 0.0f), vec2(0,1)));
 
 	unsigned int SquareIndecies[]
 	{
@@ -114,12 +100,10 @@ int main(int argc, char *argv[])
 	};
 
 	//------------------------------------------ Mesh Setup -----------------------------------
-	//Mesh Tril(Verticies, 3);
-	//Mesh Tri2(Verticies2, 3);
 	Mesh Square1(&SquareVerticies[0], SquareVerticies.size(), &SquareIndecies[0], 6);
 
 	//---------------------------------- Make Camera ----------------------------------------------
-	Camera* Camera1 = new Camera(vec3(0,0,1.5f));
+	Camera* Camera1 = new Camera(vec3(0,0,0.5f));
 
 	float XRotator;
 	float YRotator;

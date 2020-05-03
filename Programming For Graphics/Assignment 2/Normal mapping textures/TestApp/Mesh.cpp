@@ -56,10 +56,10 @@ Mesh::Mesh(Vertex* verts, unsigned int vertCount, unsigned int* indices, unsigne
 	glVertexAttribPointer(NORMAL_VB, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(NORMAL_VB);
 
-	glBindBuffer(GL_ARRAY_BUFFER, m_vertexBufferObject[TANGET_VB]);
+	glBindBuffer(GL_ARRAY_BUFFER, m_vertexBufferObject[TANGENT_VB]);
 	glBufferData(GL_ARRAY_BUFFER, vertCount * sizeof(Tangents[0]), &Tangents[0], GL_STATIC_DRAW);
-	glVertexAttribPointer(TANGET_VB, 3, GL_FLOAT, GL_FALSE, 0, 0);
-	glEnableVertexAttribArray(TANGET_VB);
+	glVertexAttribPointer(TANGENT_VB, 3, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(TANGENT_VB);
 
 	glBindBuffer(GL_ARRAY_BUFFER, m_vertexBufferObject[BITANGENT_VB]);
 	glBufferData(GL_ARRAY_BUFFER, vertCount * sizeof(BiTangents[0]), &BiTangents[0], GL_STATIC_DRAW);

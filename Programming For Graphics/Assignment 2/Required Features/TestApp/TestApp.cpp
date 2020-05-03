@@ -87,43 +87,12 @@ int main(int argc, char *argv[])
 		std::cout << "Glew Failed to Initilaize" << std::endl;
 	}
 
-	//------------------------------------------ Triangle Setup ------------------------------------
-	/*float Verticies[]
-	{
-		-0.5f, 0.5f, 0.0f,
-		0.5f, 0.5f, 0.0f,
-		-0.5f, -0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-	};*/
-
-	/*float Verticies2[]
-	{
-		0.5f, 0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-		-0.5f, -0.5f, 0.0f
-	};*/
-
-	std::vector<Vertex> SquareVerticies;
-	SquareVerticies.push_back(Vertex (vec3(-0.5f, 0.5f, 1.0f), vec2(0,0)));
-	SquareVerticies.push_back(Vertex(vec3(0.5f, 0.5f, 1.0f), vec2(1, 0)));
-	SquareVerticies.push_back(Vertex(vec3(0.5f, -0.5f, 1.0f), vec2(1, 1)));
-	SquareVerticies.push_back(Vertex(vec3(-0.5f, -0.5f, 1.0f), vec2(0,1)));
-
-	unsigned int SquareIndecies[]
-	{
-		0,1,2,0,2,3
-	};
-
-	//------------------------------------------ Mesh Setup -----------------------------------
-	//Mesh Tril(Verticies, 3);
-	//Mesh Tri2(Verticies2, 3);
-	//Mesh Square1(&SquareVerticies[0], SquareVerticies.size(), &SquareIndecies[0], 6);
 
 	//---------------------------------- Make Camera ----------------------------------------------
 	std::vector<Camera*> ListOfCameras;
-	Camera* Camera1 = new Camera(vec3(0,0,10));
+	Camera* Camera1 = new Camera(vec3(0,0,70));
 	ListOfCameras.push_back(Camera1);
-	Camera* Camera2 = new Camera(vec3(3, 0, 0));
+	Camera* Camera2 = new Camera(vec3(0, 0, 0));
 	ListOfCameras.push_back(Camera2);
 	int ActiveCamera = 0;
 
@@ -151,10 +120,11 @@ int main(int argc, char *argv[])
 
 	//Create Cube Mesh
 	Mesh Cube(&LoadedVerts[0], LoadedVerts.size(), &Indecies[0], Indecies.size());
-	Cube.m_transform->SetPosition(vec3(0, 0, -70));
+	Cube.m_transform->SetPosition(vec3(0, 0, 0));
 
 	//------------------------------------ New Light --------------------------------------------
 	LightBase* light = new LightBase();
+	light->m_Transform.SetPosition(Camera1->CameraTransform->GetPosition());
 
 	//------------------------------------------- Main Loop -----------------------------------------
 	while (true) 
@@ -201,9 +171,7 @@ int main(int argc, char *argv[])
 				}
 				if (event.key.keysym.sym == SDLK_r)
 				{
-					//Tril.m_transform->SetRotation(vec3(0, 0, 0));
-					//Tri2.m_transform->SetRotation(vec3(0, 0, 0));
-					//Square1.m_transform->SetRotation(vec3(0, 0, 0));
+
 					Cube.m_transform->SetRotation(vec3(0, 0, 0));
 				}
 				if (event.key.keysym.sym == SDLK_1) 
@@ -233,11 +201,7 @@ int main(int argc, char *argv[])
 		glUniform1i(TextureLoc, 1);
 		glBindTexture(GL_TEXTURE_2D, NormalTextureID);
 		
-		//basicShader->Update(*Square1.m_transform, *light);
 		basicShader->Update(*Cube.m_transform, *light);
-
-		//Square Draw
-		//Square1.Draw(XRotator, YRotator, ZRotator);
 
 		//Cube Draw
 		Cube.Draw(XRotator, YRotator, ZRotator);

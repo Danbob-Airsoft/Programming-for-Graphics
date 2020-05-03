@@ -14,7 +14,7 @@ uniform vec3 FragLightColor;
 uniform vec3 FragLightPos;
 uniform vec3 FragCamPos;
 
-float ambientStrength = 1;
+float ambientStrength = 1.0f;
 vec3 ambient = ambientStrength * FragLightColor;
 
 void main()
