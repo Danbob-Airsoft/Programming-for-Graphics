@@ -1,0 +1,2 @@
+Repository contains small code samples demonstrating different graphics rendering and lighting techniques, built as part of a second year univeristy module.
+The module covered aspects of rendering such as mesh generation and reading 3D object files, along with lighting techniques such as point lights and ambient lighting.
